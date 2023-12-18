@@ -27,7 +27,11 @@ def download_bilibili_as_wav(url, output_path, index):
     """
     parsed_url = urlparse(url)
     query_params = parse_qs(parsed_url.query)
-    p_value = query_params.get('p', [None])[0]
+    p_value = query_params.get('p')
+    if p_value:
+        p_value = int(p_value[0])
+    else:
+        p_value = 1
     try:
         bilibili2wav(url, output_path, index, page=p_value)
     except Exception as e:
@@ -39,10 +43,9 @@ def main():
     parser.add_argument('-d', '--download', help='Path to the download directory', required=True)
 
     args = parser.parse_args()
-
-    # 读取 CSV 文件
     csv_file = args.file
     download_dir = args.download
+    
     df = pd.read_csv(csv_file)
     for i in tqdm(range(len(df))):
         url = df["Url"].iloc[i]
