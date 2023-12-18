@@ -3,12 +3,9 @@ import pandas as pd
 from urllib.parse import urlparse, parse_qs
 from tqdm import tqdm
 from pytube import YouTube
+import argparse
 from moviepy.editor import AudioFileClip
 from bilibili2wav import bilibili2wav
-
-# Constants
-INPUT_CSV = ""
-OUTPUT_PATH = ""
 
 def download_ytb_as_wav(youtube_url, output_path, index):
     """
@@ -37,15 +34,24 @@ def download_bilibili_as_wav(url, output_path, index):
         print(f"Error downloading from Bilibili URL {url}: {e}")
 
 def main():
-    df = pd.read_csv(INPUT_CSV)
+    parser = argparse.ArgumentParser(description="Process some URLs.")
+    parser.add_argument('-f', '--file', help='Path to the CSV file containing URLs', required=True)
+    parser.add_argument('-d', '--download', help='Path to the download directory', required=True)
+
+    args = parser.parse_args()
+
+    # 读取 CSV 文件
+    csv_file = args.file
+    download_dir = args.download
+    df = pd.read_csv(csv_file)
     for i in tqdm(range(len(df))):
         url = df["Url"].iloc[i]
-        if str(i)+'.wav' in os.listdir(OUTPUT_PATH):
+        if str(i)+'.wav' in os.listdir(download_dir):
             continue
         if 'bilibili' in url:
-            download_bilibili_as_wav(url, OUTPUT_PATH, i)
+            download_bilibili_as_wav(url, download_dir, i)
         elif 'youtube' in url:
-            download_ytb_as_wav(url, OUTPUT_PATH, i)
+            download_ytb_as_wav(url, download_dir, i)
 
 if __name__ == "__main__":
     main()
