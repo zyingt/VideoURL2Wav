@@ -167,5 +167,4 @@ def bilibili2wav(URL, output_path, index, page=1):
 
 # Main Execution
 if __name__ == "__main__":
-    bilibili2wav("https://www.bilibili.com/video/BV1ja4y147Wr?p=8",
-                 "/Users/hehaorui/Documents/GitHub/processSingfake", 2, 8)
+    bilibili2wav("https://www.bilibili.com/video/BV1ja4y147Wr?p=8","", 2, 8)
