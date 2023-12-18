@@ -167,4 +167,7 @@ def bilibili2wav(URL, output_path, index, page=1):
 
 # Main Execution
 if __name__ == "__main__":
-    bilibili2wav("https://www.bilibili.com/video/BV1ja4y147Wr?p=8","", 2, 8)
+    #multi-part videos
+    bilibili2wav("https://www.bilibili.com/video/BV1ja4y147Wr?p=8","", 0, 8)
+    #normal videos
+    bilibili2wav("https://www.bilibili.com/video/BV1iz4y1U77u/?spm_id_from=333.788&vd_source=6773a02315422cd9e9d1490e5baec619","", 1)
