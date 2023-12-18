@@ -7,8 +7,8 @@ from moviepy.editor import AudioFileClip
 from bilibili2wav import bilibili2wav
 
 # Constants
-INPUT_CSV = 'singfake.csv'
-OUTPUT_PATH = "/Users/hehaorui/Documents/GitHub/processSingfake/download"
+INPUT_CSV = ""
+OUTPUT_PATH = ""
 
 def download_ytb_as_wav(youtube_url, output_path, index):
     """
