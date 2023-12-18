@@ -12,12 +12,15 @@ This script allows you to download and convert audio from Bilibili and YouTube v
 
 ## Installation
 
-1. Clone this repository:
-   `git clone https://github.com/HarryHe11/VideoURL2Wav.git`
-2. Navigate to the project directory:
+1. Install FFmpeg:
+   `brew install ffmpeg`
+2. Clone this repository:
+   `git clone https://github.com/HarryHe11/VideoURL2Wav.git` 
+3. Navigate to the project directory:
    `cd VideoURL2Wav`
-3. Install required packages:
+4. Install required packages:
    `pip install -r requirements.txt`
+   
 
 ## Usage
 
